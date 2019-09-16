@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.andresbustamante.restmybatisdemo.dao.UserDAO">
+    <select id="findUserById" resultType="net.andresbustamante.restmybatisdemo.beans.User">
+        SELECT
+            usr.usr_id         AS id,
+            usr.usr_first_name AS firstName,
+            usr.usr_surname    AS surname,
+            usr.usr_gender     AS gender,
+            usr.usr_email      AS email
+        FROM t_user usr
+        WHERE usr.usr_id = #{id}
+    </select>
+
+    <insert id="createUser" useGeneratedKeys="true" keyColumn="usr_id" keyProperty="id">
+        INSERT INTO t_user (usr_first_name, usr_surname, usr_gender, usr_email, usr_active)
+        VALUES (#{user.firstName}, #{user.surname}, #{user.gender.id}, #{user.email}, #{user.active});
+    </insert>
+</mapper>

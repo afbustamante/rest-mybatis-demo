@@ -6,7 +6,7 @@ public enum RoleEnum {
     SUPPORT(2),
     MANAGER(3);
 
-    private int id;
+    private final int id;
 
     RoleEnum(int id) {
         this.id = id;

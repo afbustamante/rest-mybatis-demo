@@ -12,13 +12,17 @@ import java.net.URI;
 @RequestMapping("/users")
 public class UsersController {
 
+    private final UsersManagementService usersManagementService;
+
     @Autowired
-    private UsersManagementService usersManagementService;
+    public UsersController(UsersManagementService usersManagementService) {
+        this.usersManagementService = usersManagementService;
+    }
 
     @PostMapping(path = "")
-    public ResponseEntity createUser(User user) {
-        usersManagementService.createUser(user);
-        URI location = URI.create("/users/" + user.getId());
+    public ResponseEntity<Void> createUser(User user) {
+        long id = usersManagementService.createUser(user);
+        URI location = URI.create("/users/" + id);
         return ResponseEntity.created(location).build();
     }
 

@@ -19,12 +19,12 @@ class UserDAOTest extends AbstractDAOTest {
 
     @Test
     void findUserById() {
-        User user1 = userDAO.findUserById(1L);
-        User user2 = userDAO.findUserById(2L);
+        User user1 = userDAO.findUserById(10L);
+        User user2 = userDAO.findUserById(20L);
 
         assertNotNull(user1);
         assertNotNull(user1.getId());
-        assertEquals(1, user1.getId());
+        assertEquals(10, user1.getId());
         assertNotNull(user1.getFirstName());
         assertEquals("Richard", user1.getFirstName());
         assertNotNull(user1.getSurname());
@@ -36,7 +36,7 @@ class UserDAOTest extends AbstractDAOTest {
 
         assertNotNull(user2);
         assertNotNull(user2.getId());
-        assertEquals(2, user2.getId());
+        assertEquals(20, user2.getId());
         assertNotNull(user2.getFirstName());
         assertEquals("Amy", user2.getFirstName());
         assertNotNull(user2.getSurname());

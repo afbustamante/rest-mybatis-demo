@@ -5,7 +5,7 @@ public enum GenderEnum {
     MALE(1),
     FEMALE(2);
 
-    private int id;
+    private final int id;
 
     GenderEnum(int id) {
         this.id = id;

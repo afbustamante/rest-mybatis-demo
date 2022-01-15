@@ -5,7 +5,6 @@ import org.flywaydb.core.Flyway;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -22,6 +21,10 @@ public class MyBatisConfig {
 
     @Value("${spring.datasource.url}")
     private String jdbcUrl;
+    @Value("${spring.datasource.username}")
+    private String jdbcUsername;
+    @Value("${spring.datasource.password}")
+    private String jdbcPassword;
     @Value("${spring.datasource.driver-class-name}")
     private String jdbcDriverClassName;
 
@@ -29,6 +32,8 @@ public class MyBatisConfig {
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUrl(jdbcUrl);
+        dataSource.setUsername(jdbcUsername);
+        dataSource.setPassword(jdbcPassword);
         dataSource.setDriverClassName(jdbcDriverClassName);
         return dataSource;
     }
@@ -50,7 +55,7 @@ public class MyBatisConfig {
     }
 
     @PostConstruct
-    public void updateDatabase() throws Exception {
+    public void updateDatabase() {
         Flyway flyway = Flyway.configure().dataSource(dataSource()).load();
 
         // Start the migration

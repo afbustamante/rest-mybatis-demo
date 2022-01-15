@@ -8,15 +8,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsersManagementService {
 
+    private final UserDAO userDAO;
+
     @Autowired
-    private UserDAO userDAO;
+    public UsersManagementService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public User findUserById(Long id) {
         return userDAO.findUserById(id);
     }
 
     public long createUser(User user) {
-        int insertedLines = userDAO.createUser(user);
+        userDAO.createUser(user);
         return user.getId();
     }
 }

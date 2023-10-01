@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static com.github.springtestdbunit.annotation.DatabaseOperation.DELETE_ALL;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Integration tests for {@link UserDao}.
+ */
 @DatabaseSetup(value = "classpath:datasets/usersDataset.xml")
 @DatabaseTearDown(value = "classpath:datasets/usersDataset.xml", type = DELETE_ALL)
-class UserDAOTest extends AbstractDAOTest {
+class UserDaoIT extends AbstractDAOIntegrationTest {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDao userDAO;
 
     @Test
     void findUserById() {

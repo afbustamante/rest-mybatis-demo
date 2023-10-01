@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface UserDAO {
+public interface UserDao {
 
     User findUserById(@Param("id") Long id);
 

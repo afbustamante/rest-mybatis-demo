@@ -16,5 +16,5 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 @PropertySource("classpath:application.properties")
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class})
-abstract class AbstractDAOTest {
+abstract class AbstractDAOIntegrationTest {
 }

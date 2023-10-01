@@ -1,17 +1,17 @@
 package net.andresbustamante.restmybatisdemo.services;
 
 import net.andresbustamante.restmybatisdemo.beans.User;
-import net.andresbustamante.restmybatisdemo.dao.UserDAO;
+import net.andresbustamante.restmybatisdemo.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsersManagementService {
 
-    private final UserDAO userDAO;
+    private final UserDao userDAO;
 
     @Autowired
-    public UsersManagementService(UserDAO userDAO) {
+    public UsersManagementService(UserDao userDAO) {
         this.userDAO = userDAO;
     }
 
